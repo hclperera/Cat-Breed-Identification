@@ -1,7 +1,8 @@
 
 ---
 
-# Cat Breed Image Classification System (Implementation 1)
+# Cat Breed Image Classification System 
+ **Implementation 1**
 
 This repository contains the first implementation of an image-based classification system designed to identify four specific cat breeds using a Convolutional Neural Network (CNN). This project is part of the **ICT 3212: Introduction to Intelligent Systems** course at the Rajarata University of Sri Lanka.
 
@@ -67,7 +68,7 @@ To ensure the model converges effectively, the following mandatory steps were ap
 
 ### Model Architecture
 
-The baseline model follows a **CNN-based approach** (Option A) consisting of:
+The baseline model follows a **CNN-based approach** consisting of:
 
 * Three Convolutional blocks (Conv2D + MaxPooling2D) for automatic feature extraction.
 
