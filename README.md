@@ -2,9 +2,9 @@
 ---
 
 # Cat Breed Image Classification System 
- **Implementation 1**
+ **Phase 03 - Implementation 1 & 2 (Final)**
 
-This repository contains the first implementation of an image-based classification system designed to identify four specific cat breeds using a Convolutional Neural Network (CNN). This project is part of the **ICT 3212: Introduction to Intelligent Systems** course at the Rajarata University of Sri Lanka.
+This repository contains the complete evolution of an image-based classification system designed to identify four specific cat breeds using a Convolutional Neural Network (CNN). This project is part of the **ICT 3212: Introduction to Intelligent Systems** course at the Rajarata University of Sri Lanka.
 
 ## 🐾 Project Overview
 
@@ -46,6 +46,11 @@ The objective of this project is to design and implement a basic image classific
 
 * **Balance:** The dataset is identified as **Unbalanced**.
 
+### 🧹 Dataset Improvements (Implementation 2)
+To resolve severe overfitting caused by noisy data, the dataset was heavily modified in Implementation 2:
+* **Data Cleaning:** Mislabeled images (e.g., standard orange tabbies labeled as Calico, mixed street breeds labeled as Siamese) were manually removed.
+* **Balancing:** The dataset was strictly undersampled to exactly **1,000 accurate images per breed** (4,000 images total), converting it to a **Perfectly Balanced** dataset.
+
 
 
 ---
@@ -78,6 +83,13 @@ The baseline model follows a **CNN-based approach** consisting of:
 
 * Softmax activation for multi-class probability output.
 
+### 🚀 Optimized Architecture (Implementation 2 - Final Model)
+To improve generalization, we upgraded to a **Transfer Learning** approach:
+* **Pre-trained Base:** MobileNetV2 architecture with frozen 'imagenet' weights.
+* **Data Augmentation:** Added `RandomFlip`, `RandomRotation(0.1)`, and `RandomZoom(0.1)` to artificially expand the dataset.
+* **Regularization:** Added a `Dropout(0.5)` layer and `EarlyStopping` (patience=5) to prevent memorization.
+* **Custom Head:** GlobalAveragePooling2D followed by a Dense output layer for the 4 specific cat classes.
+
 ---
 
 ## 📈 Baseline Results (Implementation 1)
@@ -87,5 +99,19 @@ The model was trained for **10 epochs** with the following performance metrics:
 * **Training Accuracy:** 95.60% 
 * **Validation Accuracy:** 55.89% 
 * **Observation:** The model currently shows significant **overfitting** due to a lack of regularization and data augmentation in this baseline phase.
+
+---
+
+## 🏆 Final Results (Implementation 2)
+
+By utilizing MobileNetV2 on the cleaned and balanced dataset, the system achieved state of the art performance:
+
+* **Overall Test Accuracy:** **96.00%** on unseen test data.
+* **Overfitting:** Completely eradicated. Validation accuracy consistently tracked alongside training accuracy.
+* **Class F1-Scores:**
+  * Bombay: 0.97
+  * Calico: 0.96
+  * Persian: 0.94
+  * Siamese: 0.97
 
 ---
